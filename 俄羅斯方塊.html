@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>俄羅斯方塊</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="C:\Users\edwar\jquery-ui-1.12.1.custom\jquery-ui.min.css">
+    <script src="C:\Users\edwar\jquery-ui-1.12.1.custom\jquery-ui.js"></script>
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            margin: 0px;
+            background-color: aqua;
+        }
+
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            transform: translate(35%, 0%);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="drawplace"></canvas>
+    <div id="dailog" title="俄羅斯方塊">
+        <button style="right: 0;position: absolute" class="ui-button ui-corner-all ui-widget"
+            onclick="init();$('#dailog').dialog('close')">Start</button>
+    </div>
+    <script src=main.js></script>
+    <script>
+        $("#dailog").dialog({
+            buttons: [
+                {
+                    text: "困難度",
+                    click: () => {
+
+                    }
+                },
+                {
+                    text: "+",
+                    click: () => {
+                        if (player.difficulty < 3) {
+                            $("#difficult").text(parseInt($("#difficult").text()) + 1);
+                            player.difficulty++;
+                        }
+                    }
+                },
+                {
+                    text: "0",
+                    id: "difficult",
+                    click: () => {
+
+                    }
+                },
+                {
+                    text: "-",
+                    click: () => {
+                        if (player.difficulty > 0) {
+                            $("#difficult").text(parseInt($("#difficult").text()) - 1);
+                            player.difficulty--;
+                        }
+                    }
+                },
+            ]
+        })
+    </script>
+    <div id="introdition" style="position: absolute;right: 200px;font-size: 50px;">
+        按"C"保存方塊<br>
+        按"P"暫停<br>
+        按"上"旋轉<br>
+        按"下"加速掉落<br>
+        按"左"往左移動<br>
+        按"右"往右移動<br>
+        按"空白"放下<br>
+        按"B"使用炸彈<br>
+    </div>
+</body>
+
+</html>
