@@ -47,7 +47,7 @@ class Player {
         this.x = Math.floor((12 - this.hold.block[0].length) / 2) - 0;
         this.y = 1;
         if (this.touch(this.x, this.y)) {
-            alert("You lost");
+            
             init();
         }
         this.draw();
