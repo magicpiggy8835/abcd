@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <script src="jquery-ui.js"></script>
+    <!-- <script src="main.js"></script> -->
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color:black;
+    }
+    #start{
+        background-color:rgb(207, 207, 207);
+        height:50px;
+        width:200px;
+        font-size: 35px;
+    }
+</style>
+<body align="center">
+    
+    <!-- <button id="start">開始玩</button><br> -->
+    <canvas id="drawplace"></canvas>
+    <div id="tyy_now">
+        <button onclick='$("#dailog").dialog("open")'>難度</button>
+        <button onclick='$("#text").dialog("open")'>說明</button>
+    </div>
+    <script src=main.js></script>
+    <div id="text">
+        按"C"保存方塊<br>
+        按"P"暫停<br>
+        按"上"旋轉<br>
+        按"下"加速掉落<br>
+        按"左"往左移動<br>
+        按"右"往右移動<br>
+        按"空白"放下<br>
+        按"B"使用炸彈<br>
+    </div>
+    <div id="dailog" title="俄羅斯方塊">
+        <button  style="right: 0;position: absolute" class="ui-button ui-corner-all ui-widget"
+            onclick="location.href='start.html';$('#dailog').dialog('close');$('#tyy_now').dialog('close');$('#text').dialog('close')">Start</button>
+    </div>
+    <!-- <div id="set">
+        <button onclick="code(1)">1</button>
+        <button onclick="code(2)">2</button>
+        <button onclick="code(3)">3</button>
+    </div> -->
+    <br><button onclick="location.href='index.html'">Back</button>
+</body>
+<script>
+    init();
+    $("#tyy_now").dialog({
+        autoOpen:false,
+        height:300,
+        width:300,
+    });
+    $("#text").dialog({
+        autoOpen:false,
+        height:300,
+        width:300,
+    });
+    $("#dailog").dialog({
+        height:200,
+        autoOpen:false,
+        buttons: [
+            {
+                text: "困難度",
+                click: () => {
+
+                }
+            },
+            {
+                text: "+",
+                click: () => {
+                    if (player.difficulty < 3) {
+                        $("#difficult").text(parseInt($("#difficult").text()) + 1);
+                        player.difficulty++;
+                    }
+                }
+            },
+            {
+                text: "0",
+                id: "difficult",
+                click: () => {
+
+                }
+            },
+            {
+                text: "-",
+                click: () => {
+                    if (player.difficulty > 0) {
+                        $("#difficult").text(parseInt($("#difficult").text()) - 1);
+                        player.difficulty--;
+                    }
+                }
+            },
+        ]
+    })
+    function code(aa){
+        Player.difficulty=aa;
+        $("#set").dialog("close");
+    }
+</script>
+</html>
